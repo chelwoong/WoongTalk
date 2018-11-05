@@ -10,5 +10,6 @@ target 'WoongTalk' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'Firebase/Core'
   pod 'Firebase/RemoteConfig'
+  pod 'TextFieldEffects'
 
 end
