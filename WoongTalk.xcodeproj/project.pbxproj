@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ECBE6033C1BBF7AA886B818 /* Pods_WoongTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2674BD000FD24B6E3756A4C /* Pods_WoongTalk.framework */; };
 		4CA2DED42190184E00D03DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DED32190184E00D03DC1 /* AppDelegate.swift */; };
 		4CA2DED62190184E00D03DC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DED52190184E00D03DC1 /* ViewController.swift */; };
 		4CA2DED92190184E00D03DC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DED72190184E00D03DC1 /* Main.storyboard */; };
 		4CA2DEDB2190185600D03DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEDA2190185600D03DC1 /* Assets.xcassets */; };
 		4CA2DEDE2190185600D03DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEDC2190185600D03DC1 /* LaunchScreen.storyboard */; };
+		4CA2DEE621901CAE00D03DC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE521901CAE00D03DC1 /* GoogleService-Info.plist */; };
+		4CA2DEE82190275B00D03DC1 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CCAEA20DFAA39B26A017537 /* Pods-WoongTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoongTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk.debug.xcconfig"; sourceTree = "<group>"; };
 		4CA2DED02190184E00D03DC1 /* WoongTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoongTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA2DED32190184E00D03DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CA2DED52190184E00D03DC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,10 @@
 		4CA2DEDA2190185600D03DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CA2DEDD2190185600D03DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CA2DEDF2190185600D03DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CA2DEE521901CAE00D03DC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoongTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk.release.xcconfig"; sourceTree = "<group>"; };
+		C2674BD000FD24B6E3756A4C /* Pods_WoongTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoongTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECBE6033C1BBF7AA886B818 /* Pods_WoongTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B0E0756C86DF2ABBE34A204 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CCAEA20DFAA39B26A017537 /* Pods-WoongTalk.debug.xcconfig */,
+				6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4CA2DEC72190184E00D03DC1 = {
 			isa = PBXGroup;
 			children = (
 				4CA2DED22190184E00D03DC1 /* WoongTalk */,
 				4CA2DED12190184E00D03DC1 /* Products */,
+				1B0E0756C86DF2ABBE34A204 /* Pods */,
+				C9FD89AD44CC0C8079601B08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,24 @@
 		4CA2DED22190184E00D03DC1 /* WoongTalk */ = {
 			isa = PBXGroup;
 			children = (
+				4CA2DEE521901CAE00D03DC1 /* GoogleService-Info.plist */,
 				4CA2DED32190184E00D03DC1 /* AppDelegate.swift */,
 				4CA2DED52190184E00D03DC1 /* ViewController.swift */,
+				4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */,
 				4CA2DED72190184E00D03DC1 /* Main.storyboard */,
 				4CA2DEDA2190185600D03DC1 /* Assets.xcassets */,
 				4CA2DEDC2190185600D03DC1 /* LaunchScreen.storyboard */,
 				4CA2DEDF2190185600D03DC1 /* Info.plist */,
 			);
 			path = WoongTalk;
+			sourceTree = "<group>";
+		};
+		C9FD89AD44CC0C8079601B08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2674BD000FD24B6E3756A4C /* Pods_WoongTalk.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CA2DEE22190185600D03DC1 /* Build configuration list for PBXNativeTarget "WoongTalk" */;
 			buildPhases = (
+				8DC428CCB8C7011E8BC871A9 /* [CP] Check Pods Manifest.lock */,
 				4CA2DECC2190184E00D03DC1 /* Sources */,
 				4CA2DECD2190184E00D03DC1 /* Frameworks */,
 				4CA2DECE2190184E00D03DC1 /* Resources */,
+				8730AF8482B7D8D8644F0AB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +155,67 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA2DEDE2190185600D03DC1 /* LaunchScreen.storyboard in Resources */,
+				4CA2DEE82190275B00D03DC1 /* RemoteConfigDefaults.plist in Resources */,
+				4CA2DEE621901CAE00D03DC1 /* GoogleService-Info.plist in Resources */,
 				4CA2DEDB2190185600D03DC1 /* Assets.xcassets in Resources */,
 				4CA2DED92190184E00D03DC1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8730AF8482B7D8D8644F0AB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DC428CCB8C7011E8BC871A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WoongTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CA2DECC2190184E00D03DC1 /* Sources */ = {
@@ -280,6 +367,7 @@
 		};
 		4CA2DEE32190185600D03DC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CCAEA20DFAA39B26A017537 /* Pods-WoongTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +385,7 @@
 		};
 		4CA2DEE42190185600D03DC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
