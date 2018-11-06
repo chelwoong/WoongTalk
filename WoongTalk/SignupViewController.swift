@@ -9,13 +9,12 @@
 import UIKit
 import Firebase
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    // MARK: - @IBOutlet 연결!!!!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var password: UITextField!
-    
     
     @IBOutlet weak var signup: UIButton!
     @IBOutlet weak var cancel: UIButton!
@@ -36,6 +35,9 @@ class SignupViewController: UIViewController {
         color = remoteConfig["splash_background"].stringValue
         statusBar.backgroundColor = UIColor(hex: color)
         
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imagePicker)))
+        
         signup.backgroundColor = UIColor(hex: color)
         cancel.backgroundColor = UIColor(hex: color)
         
@@ -46,12 +48,46 @@ class SignupViewController: UIViewController {
     }
     
     @objc
+    func imagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        if let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.imageView.image = originalImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
     func signupEvent() {
+        print("signupEvent")
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (authResult, error) in
             guard let uid = authResult?.user.uid else {
                 return
             }
-            Database.database().reference().child("users").child(uid).setValue(["userName":self.name.text!])
+            
+            let image = self.imageView.image?.jpegData(compressionQuality: 0.1)
+            
+            Storage.storage().reference().child("userImages").child(uid).putData(image!, metadata: nil, completion: { (metadata, error) in
+                print("putData")
+                Storage.storage().reference().child("userImages").child(uid).downloadURL(completion: { (url, error) in
+                    guard let imageUrl = url?.absoluteString else {
+                        return
+                    }
+                    print("downloadData \(String(describing: imageUrl))")
+                    Database.database().reference().child("users").child(uid).setValue(["userName":self.name.text!, "profileImageUrl":imageUrl])
+                })
+            })
+            
+           
         }
     }
     

@@ -13,5 +13,7 @@ target 'WoongTalk' do
   pod 'TextFieldEffects'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+
 
 end
