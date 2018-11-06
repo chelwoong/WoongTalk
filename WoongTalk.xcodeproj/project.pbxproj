@@ -16,6 +16,7 @@
 		4CA2DEE82190275B00D03DC1 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */; };
 		4CA2DEEA21903A4900D03DC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */; };
 		4CA2DEEC21903AED00D03DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */; };
+		4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEED2190436400D03DC1 /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../SimpleVideoPlayer/SimpleVideoPlayer/Assets.xcassets; sourceTree = "<group>"; };
+		4CA2DEED2190436400D03DC1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoongTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk.release.xcconfig"; sourceTree = "<group>"; };
 		C2674BD000FD24B6E3756A4C /* Pods_WoongTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoongTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				4CA2DED32190184E00D03DC1 /* AppDelegate.swift */,
 				4CA2DED52190184E00D03DC1 /* ViewController.swift */,
 				4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */,
+				4CA2DEED2190436400D03DC1 /* SignupViewController.swift */,
 				4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */,
 				4CA2DED72190184E00D03DC1 /* Main.storyboard */,
 				4CA2DEDC2190185600D03DC1 /* LaunchScreen.storyboard */,
@@ -177,20 +180,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +236,7 @@
 			files = (
 				4CA2DEEA21903A4900D03DC1 /* LoginViewController.swift in Sources */,
 				4CA2DED62190184E00D03DC1 /* ViewController.swift in Sources */,
+				4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */,
 				4CA2DED42190184E00D03DC1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
