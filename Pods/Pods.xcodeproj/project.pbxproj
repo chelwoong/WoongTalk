@@ -3920,6 +3920,9 @@
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				TargetAttributes = {
+					09236661DCC642790FD8DBB2D3878CF2 = {
+						LastSwiftMigration = 1000;
+					};
 					EAF712140E5B8A73587FA604A4E0C916 = {
 						LastSwiftMigration = 1000;
 					};
@@ -4750,6 +4753,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71B325068B1F76499313D45EE10F0EC0 /* FirebaseAuth.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4769,6 +4773,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4969,6 +4974,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71B325068B1F76499313D45EE10F0EC0 /* FirebaseAuth.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

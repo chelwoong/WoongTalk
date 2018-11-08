@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     let remoteConfig = RemoteConfig.remoteConfig()
@@ -17,6 +21,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 자동 로그인 방지를 위해 미리 로그아웃
+        try! Auth.auth().signOut()
         
         // MARK: make statusBar
         let statusBar = UIView()
@@ -30,9 +37,31 @@ class LoginViewController: UIViewController {
         statusBar.backgroundColor = UIColor(hex: color)
         loginButton.backgroundColor = UIColor(hex: color)
         signupButton.backgroundColor = UIColor(hex: color)
-
+        
+        // #selector에는 다음 화면으로 넘어가는 이번트!
+        loginButton.addTarget(self, action: #selector(loginEvent), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
-        // Do any additional setup after loading the view.
+        
+        Auth.auth().addStateDidChangeListener { (Auth, user) in
+            if (user != nil) {
+                let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                self.present(view, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    @objc
+    func loginEvent() {
+        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+            
+            if ( error != nil) {
+                print("ERROR!!!!!!!!!!!!!!")
+                let alert = UIAlertController(title: "에러", message: error.debugDescription, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     @objc
