@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener { (Auth, user) in
             if (user != nil) {
-                let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
                 self.present(view, animated: true, completion: nil)
             }
         }
@@ -56,7 +56,6 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
             
             if ( error != nil) {
-                print("ERROR!!!!!!!!!!!!!!")
                 let alert = UIAlertController(title: "에러", message: error.debugDescription, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
