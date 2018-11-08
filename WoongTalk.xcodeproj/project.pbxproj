@@ -17,7 +17,8 @@
 		4CA2DEEA21903A4900D03DC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */; };
 		4CA2DEEC21903AED00D03DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */; };
 		4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEED2190436400D03DC1 /* SignupViewController.swift */; };
-		4CD2DF59219436220035B9D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DF58219436220035B9D5 /* MainViewController.swift */; };
+		4CD2DF59219436220035B9D5 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DF58219436220035B9D5 /* PeopleViewController.swift */; };
+		4CD2DF5D21949A140035B9D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DF5C21949A140035B9D5 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../SimpleVideoPlayer/SimpleVideoPlayer/Assets.xcassets; sourceTree = "<group>"; };
 		4CA2DEED2190436400D03DC1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		4CD2DF58219436220035B9D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4CD2DF58219436220035B9D5 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		4CD2DF5C21949A140035B9D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoongTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk.release.xcconfig"; sourceTree = "<group>"; };
 		C2674BD000FD24B6E3756A4C /* Pods_WoongTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoongTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,8 +91,9 @@
 				4CA2DEE72190275B00D03DC1 /* RemoteConfigDefaults.plist */,
 				4CA2DED72190184E00D03DC1 /* Main.storyboard */,
 				4CA2DEDC2190185600D03DC1 /* LaunchScreen.storyboard */,
-				4CD2DF58219436220035B9D5 /* MainViewController.swift */,
+				4CD2DF58219436220035B9D5 /* PeopleViewController.swift */,
 				4CA2DEDF2190185600D03DC1 /* Info.plist */,
+				4CD2DF5C21949A140035B9D5 /* UserModel.swift */,
 			);
 			path = WoongTalk;
 			sourceTree = "<group>";
@@ -241,7 +244,8 @@
 				4CA2DED62190184E00D03DC1 /* ViewController.swift in Sources */,
 				4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */,
 				4CA2DED42190184E00D03DC1 /* AppDelegate.swift in Sources */,
-				4CD2DF59219436220035B9D5 /* MainViewController.swift in Sources */,
+				4CD2DF5D21949A140035B9D5 /* UserModel.swift in Sources */,
+				4CD2DF59219436220035B9D5 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
