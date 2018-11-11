@@ -176,12 +176,14 @@
                             <constraint firstItem="gVv-LW-HQJ" firstAttribute="trailing" secondItem="Nrd-lB-BDA" secondAttribute="trailing" constant="16" id="SRD-3D-53d"/>
                             <constraint firstItem="dnW-54-eIq" firstAttribute="leading" secondItem="gVv-LW-HQJ" secondAttribute="leading" constant="16" id="W9Y-Af-des"/>
                             <constraint firstItem="gVv-LW-HQJ" firstAttribute="bottom" secondItem="dnW-54-eIq" secondAttribute="bottom" constant="20" id="mzT-zV-xQS"/>
+                            <constraint firstItem="Nrd-lB-BDA" firstAttribute="leading" secondItem="dnW-54-eIq" secondAttribute="trailing" constant="8" id="qR7-ed-nux"/>
                             <constraint firstItem="gVv-LW-HQJ" firstAttribute="bottom" secondItem="Nrd-lB-BDA" secondAttribute="bottom" constant="20" id="xLO-ju-7xV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gVv-LW-HQJ"/>
                     </view>
                     <connections>
                         <outlet property="sendButton" destination="Nrd-lB-BDA" id="NfZ-jY-Yrt"/>
+                        <outlet property="textfieldMessage" destination="dnW-54-eIq" id="zvb-IU-wTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvg-69-SQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
