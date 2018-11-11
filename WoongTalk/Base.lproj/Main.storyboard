@@ -144,20 +144,49 @@
             </objects>
             <point key="canvasLocation" x="3342" y="-122"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="q5t-E6-9UB">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="YoC-2X-RVA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="YoC-2X-RVA" customClass="ChatViewController" customModule="WoongTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Rc-WS-hwI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-lB-BDA">
+                                <rect key="frame" x="313" y="617" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LMc-Qh-vhK"/>
+                                    <constraint firstAttribute="width" constant="46" id="Mwb-wQ-OET"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-54-eIq">
+                                <rect key="frame" x="16" y="617" width="289" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="289" id="IMG-kD-RCU"/>
+                                    <constraint firstAttribute="height" constant="30" id="WuC-Mn-S1E"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gVv-LW-HQJ" firstAttribute="trailing" secondItem="Nrd-lB-BDA" secondAttribute="trailing" constant="16" id="SRD-3D-53d"/>
+                            <constraint firstItem="dnW-54-eIq" firstAttribute="leading" secondItem="gVv-LW-HQJ" secondAttribute="leading" constant="16" id="W9Y-Af-des"/>
+                            <constraint firstItem="gVv-LW-HQJ" firstAttribute="bottom" secondItem="dnW-54-eIq" secondAttribute="bottom" constant="20" id="mzT-zV-xQS"/>
+                            <constraint firstItem="gVv-LW-HQJ" firstAttribute="bottom" secondItem="Nrd-lB-BDA" secondAttribute="bottom" constant="20" id="xLO-ju-7xV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gVv-LW-HQJ"/>
                     </view>
+                    <connections>
+                        <outlet property="sendButton" destination="Nrd-lB-BDA" id="NfZ-jY-Yrt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvg-69-SQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4036" y="-126"/>
+            <point key="canvasLocation" x="4036" y="-126.38680659670166"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="S0N-mb-Ztl">

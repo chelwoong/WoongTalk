@@ -17,6 +17,8 @@
 		4CA2DEEA21903A4900D03DC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */; };
 		4CA2DEEC21903AED00D03DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */; };
 		4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2DEED2190436400D03DC1 /* SignupViewController.swift */; };
+		4CCA999321983C8500B22B13 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA999221983C8500B22B13 /* ChatViewController.swift */; };
+		4CCA999621983EB500B22B13 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA999521983EB500B22B13 /* ChatModel.swift */; };
 		4CD2DF59219436220035B9D5 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DF58219436220035B9D5 /* PeopleViewController.swift */; };
 		4CD2DF5D21949A140035B9D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DF5C21949A140035B9D5 /* UserModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		4CA2DEE921903A4900D03DC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../SimpleVideoPlayer/SimpleVideoPlayer/Assets.xcassets; sourceTree = "<group>"; };
 		4CA2DEED2190436400D03DC1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4CCA999221983C8500B22B13 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4CCA999521983EB500B22B13 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		4CD2DF58219436220035B9D5 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		4CD2DF5C21949A140035B9D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6F97289EEDA0DC5962FE556A /* Pods-WoongTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoongTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoongTalk/Pods-WoongTalk.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		4CA2DED22190184E00D03DC1 /* WoongTalk */ = {
 			isa = PBXGroup;
 			children = (
+				4CCA999421983E7B00B22B13 /* Model */,
 				4CA2DEE521901CAE00D03DC1 /* GoogleService-Info.plist */,
 				4CA2DEEB21903AED00D03DC1 /* Assets.xcassets */,
 				4CA2DED32190184E00D03DC1 /* AppDelegate.swift */,
@@ -93,9 +98,18 @@
 				4CA2DEDC2190185600D03DC1 /* LaunchScreen.storyboard */,
 				4CD2DF58219436220035B9D5 /* PeopleViewController.swift */,
 				4CA2DEDF2190185600D03DC1 /* Info.plist */,
-				4CD2DF5C21949A140035B9D5 /* UserModel.swift */,
+				4CCA999221983C8500B22B13 /* ChatViewController.swift */,
 			);
 			path = WoongTalk;
+			sourceTree = "<group>";
+		};
+		4CCA999421983E7B00B22B13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2DF5C21949A140035B9D5 /* UserModel.swift */,
+				4CCA999521983EB500B22B13 /* ChatModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C9FD89AD44CC0C8079601B08 /* Frameworks */ = {
@@ -243,6 +257,8 @@
 				4CA2DEEA21903A4900D03DC1 /* LoginViewController.swift in Sources */,
 				4CA2DED62190184E00D03DC1 /* ViewController.swift in Sources */,
 				4CA2DEEE2190436400D03DC1 /* SignupViewController.swift in Sources */,
+				4CCA999621983EB500B22B13 /* ChatModel.swift in Sources */,
+				4CCA999321983C8500B22B13 /* ChatViewController.swift in Sources */,
 				4CA2DED42190184E00D03DC1 /* AppDelegate.swift in Sources */,
 				4CD2DF5D21949A140035B9D5 /* UserModel.swift in Sources */,
 				4CD2DF59219436220035B9D5 /* PeopleViewController.swift in Sources */,

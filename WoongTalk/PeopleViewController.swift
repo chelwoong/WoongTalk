@@ -30,7 +30,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Database.database().reference().child("users").observe(DataEventType.value, with: { (snapshot) in
             
             // 추가될 때마다 데이터 중복 방지를 위해 removeall
-//            self.array.removeAll()
+            self.array.removeAll()
             
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
@@ -88,8 +88,9 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController")
-        self.navigationController?.pushViewController(view!, animated: true)
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        view.destinationUid = self.array[indexPath.row].uid
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
 
