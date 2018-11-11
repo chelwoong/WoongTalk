@@ -83,7 +83,12 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, UI
                         return
                     }
                     print("downloadData \(String(describing: imageUrl))")
-                    Database.database().reference().child("users").child(uid).setValue(["userName":self.name.text!, "profileImageUrl":imageUrl])
+                    let value = ["userName":self.name.text!, "profileImageUrl":imageUrl]
+                    Database.database().reference().child("users").child(uid).setValue(value, withCompletionBlock: { (err, ref) in
+                        if (err == nil) {
+                            self.cancelEvent()
+                        }
+                    })
                 })
             })
             

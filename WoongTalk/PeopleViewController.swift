@@ -23,7 +23,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableview)
         tableview.snp.makeConstraints { (m) in
-            m.top.equalTo(view).offset(20)
+            m.top.equalTo(view)
             m.bottom.left.right.equalTo(view)
         }
         
@@ -35,8 +35,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
                 let userModel = UserModel()
-                print("***********\(fchild), \(fchild.value!)")
-                print(userModel.setValuesForKeys(fchild.value as! [String : Any]))
+                userModel.setValuesForKeys(fchild.value as! [String : Any])
                 self.array.append(userModel)
             }
             
@@ -59,7 +58,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addSubview(imageView)
         imageView.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
-            m.left.equalTo(cell)
+            m.left.equalTo(cell).offset(20)
             m.height.width.equalTo(50)
         }
         
@@ -76,7 +75,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addSubview(label)
         label.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
-            m.left.equalTo(imageView.snp.right).offset(30)
+            m.left.equalTo(imageView.snp.right).offset(20)
         }
         
         label.text = array[indexPath.row].userName
@@ -86,6 +85,11 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController")
+        self.navigationController?.pushViewController(view!, animated: true)
     }
     
 

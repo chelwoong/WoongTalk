@@ -40,12 +40,12 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-Oc-XBD" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="219" width="343" height="40"/>
+                                <rect key="frame" x="16" y="219" width="343" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="MQ9-KN-Xrj"/>
+                                    <constraint firstAttribute="height" constant="50" id="MQ9-KN-Xrj"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -57,12 +57,12 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOn-ib-fFm" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="281" width="343" height="40"/>
+                                <rect key="frame" x="16" y="291" width="343" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="K9m-1V-cWY"/>
+                                    <constraint firstAttribute="height" constant="50" id="K9m-1V-cWY"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -74,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vi-Ly-QQn">
-                                <rect key="frame" x="16" y="438" width="343" height="40"/>
+                                <rect key="frame" x="16" y="458" width="343" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="biP-U0-vYt"/>
@@ -84,7 +84,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEp-BC-exP">
-                                <rect key="frame" x="16" y="379" width="343" height="40"/>
+                                <rect key="frame" x="16" y="399" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Lpd-1F-uRn"/>
@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="830" y="-171"/>
         </scene>
-        <!--People-->
+        <!--People View Controller-->
         <scene sceneID="glC-g8-w3A">
             <objects>
                 <viewController id="4Ef-dr-iR5" customClass="PeopleViewController" customModule="WoongTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,11 +138,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="chw-aj-p1W"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="People" image="ic_people" id="1OQ-Ea-7TE"/>
+                    <navigationItem key="navigationItem" id="2An-tQ-x55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Jr-3i-cZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="-121"/>
+            <point key="canvasLocation" x="3342" y="-122"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="q5t-E6-9UB">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" id="YoC-2X-RVA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Rc-WS-hwI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gVv-LW-HQJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dvg-69-SQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4036" y="-126"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="S0N-mb-Ztl">
@@ -272,11 +287,12 @@
                 <tabBarController storyboardIdentifier="MainViewTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="gGN-yD-IGJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cz5-HM-eTI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="4Ef-dr-iR5" kind="relationship" relationship="viewControllers" id="a9L-nw-1yK"/>
+                        <segue destination="gHD-SP-xxj" kind="relationship" relationship="viewControllers" id="a9L-nw-1yK"/>
                         <segue destination="Zjd-dI-8bH" kind="relationship" relationship="viewControllers" id="We1-IR-3od"/>
                         <segue destination="4yo-9h-3hI" kind="relationship" relationship="viewControllers" id="bA0-6I-fLc"/>
                     </connections>
@@ -299,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5j-IM-cBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2408" y="711"/>
+            <point key="canvasLocation" x="2222" y="917"/>
         </scene>
         <!--Account-->
         <scene sceneID="jXA-r3-n8A">
@@ -316,6 +332,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-Ox-CLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3280" y="553"/>
+        </scene>
+        <!--People-->
+        <scene sceneID="v6F-lw-RQL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHD-SP-xxj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="People" image="ic_people" id="1OQ-Ea-7TE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qbp-R3-7bS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Ef-dr-iR5" kind="relationship" relationship="rootViewController" id="THB-uL-hXX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="11c-cv-izc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2564" y="-121.88905547226388"/>
         </scene>
     </scenes>
     <resources>
