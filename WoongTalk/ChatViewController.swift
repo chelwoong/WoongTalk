@@ -17,6 +17,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var chatRoomUid: String?
     
     var comments : [ChatModel.Comment] = []
+    var userModel : UserModel?
 
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var sendButton: UIButton!
@@ -29,10 +30,34 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let view = tableview.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        view.textLabel?.text = self.comments[indexPath.row].message
         
-        return view
+        if (self.comments[indexPath.row].uid == uid) {
+            let view = tableview.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
+            view.labelMessage.text = self.comments[indexPath.row].message
+            view.labelMessage.numberOfLines = 0
+            return view
+        } else {
+            let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
+            view.labelName.text = userModel?.userName
+            view.labelMessage.text = self.comments[indexPath.row].message
+            view.labelMessage.numberOfLines = 0
+            
+            let url = URL(string: ((self.userModel?.profileImageUrl)!))
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
+                
+                DispatchQueue.main.async {
+                    view.imageviewProfile.image = UIImage(data: data!)
+                    view.imageviewProfile.layer.cornerRadius = view.imageviewProfile.frame.width/2
+                    view.imageviewProfile.clipsToBounds = true
+                }
+            })
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     override func viewDidLoad() {
@@ -82,11 +107,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                         // 방 키를 받아왔으면 다시 버튼 on
                         self.sendButton.isEnabled = true
                         
-                        self.getMessageList()
+                        self.getDestinationInfo()
+                        
                     }
                 }
             }
         }))
+    }
+    
+    
+    func getDestinationInfo() {
+        Database.database().reference().child("users").child(self.destinationUid!).observe(DataEventType.value, with: { (dataSnapshot) in
+            self.userModel = UserModel()
+            self.userModel?.setValuesForKeys(dataSnapshot.value as! [String:Any])
+            self.getMessageList()
+        })
     }
     
     func getMessageList() {
@@ -103,6 +138,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
+    
 
     /*
     // MARK: - Navigation
@@ -114,4 +150,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+class MyMessageCell: UITableViewCell {
+    
+    @IBOutlet weak var labelMessage: UILabel!
+}
+
+class DestinationMessageCell: UITableViewCell {
+    
+    @IBOutlet weak var imageviewProfile: UIImageView!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelMessage: UILabel!
 }
