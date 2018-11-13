@@ -9,15 +9,32 @@
 import UIKit
 import Firebase
 
-var uid: String?
-var chatRoomUid: String?
 
-class ChatViewController: UIViewController {
 
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    var uid: String?
+    var chatRoomUid: String?
+    
+    var comments : [ChatModel.Comment] = []
+
+    @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var textfieldMessage: UITextField!
     
     public var destinationUid: String! // 대화할 상대의 uid
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let view = tableview.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+        view.textLabel?.text = self.comments[indexPath.row].message
+        
+        return view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,15 +52,20 @@ class ChatViewController: UIViewController {
         ]
         
         if (chatRoomUid == nil) {
-            Database.database().reference().child("chatRooms").childByAutoId().setValue(createRoomInfo)
+            // 생성되는동안 버튼이 눌리면 안됨
+            sendButton.isEnabled = false
+            // 방 생성 코드
+            Database.database().reference().child("chatRooms").childByAutoId().setValue(createRoomInfo) { (err, ref) in
+                if(err == nil) {
+                    self.checkChatRoom()
+                }
+            }
         } else {
             let value : Dictionary<String,Any> = [
-                "comment":[
-                    "uid": uid!,
-                    "message": textfieldMessage.text!
-                ]
+                "uid": uid!,
+                "message": textfieldMessage.text!
             ]
-            Database.database().reference().child("chatRomms").child(chatRoomUid!).child("comments").setValue(value)
+            Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
         }
         
     }
@@ -51,9 +73,34 @@ class ChatViewController: UIViewController {
     func checkChatRoom() {
         Database.database().reference().child("chatRooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value, with: ({ (dataSnapshot) in
             for item in dataSnapshot.children.allObjects as! [DataSnapshot]{
-                chatRoomUid = item.key
+                
+                // 내가 대화할 상대방을 체크하는 코드
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    if(chatModel?.users[self.destinationUid!] == true) {
+                        self.chatRoomUid = item.key
+                        // 방 키를 받아왔으면 다시 버튼 on
+                        self.sendButton.isEnabled = true
+                        
+                        self.getMessageList()
+                    }
+                }
             }
         }))
+    }
+    
+    func getMessageList() {
+        Database.database().reference().child("chatRooms").child(self.chatRoomUid!).child("comments").observe(DataEventType.value, with: { (dataSnapshot) in
+            
+            // 데이터가 쌓일 수 있으니 초기화
+            self.comments.removeAll()
+            
+            for item in dataSnapshot.children.allObjects as! [DataSnapshot] {
+                let comment = ChatModel.Comment(JSON: item.value as! [String : AnyObject])
+                self.comments.append(comment!)
+            }
+            self.tableview.reloadData()
+        })
     }
     
 

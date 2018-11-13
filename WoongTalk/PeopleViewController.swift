@@ -32,10 +32,17 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // 추가될 때마다 데이터 중복 방지를 위해 removeall
             self.array.removeAll()
             
+            let myUid = Auth.auth().currentUser?.uid
+            
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
                 let userModel = UserModel()
                 userModel.setValuesForKeys(fchild.value as! [String : Any])
+                
+                if(userModel.uid == myUid) {
+                    continue
+                }
+                
                 self.array.append(userModel)
             }
             
