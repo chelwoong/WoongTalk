@@ -53,13 +53,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if (chatRoomUid == nil) {
             // 생성되는동안 버튼이 눌리면 안됨
-            sendButton.isEnabled = false
+            self.sendButton.isEnabled = false
             // 방 생성 코드
-            Database.database().reference().child("chatRooms").childByAutoId().setValue(createRoomInfo) { (err, ref) in
+            Database.database().reference().child("chatRooms").childByAutoId().setValue(createRoomInfo, withCompletionBlock: { (err, ref) in
                 if(err == nil) {
                     self.checkChatRoom()
                 }
-            }
+                
+            })
         } else {
             let value : Dictionary<String,Any> = [
                 "uid": uid!,
@@ -67,7 +68,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             ]
             Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
         }
-        
     }
     
     func checkChatRoom() {
