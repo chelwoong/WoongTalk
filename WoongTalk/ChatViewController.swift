@@ -37,23 +37,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.labelMessage.numberOfLines = 0
             return view
         } else {
+            print("/////// destination \(String(describing: destinationUid))")
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
             view.labelName.text = userModel?.userName
             view.labelMessage.text = self.comments[indexPath.row].message
             view.labelMessage.numberOfLines = 0
             
             let url = URL(string: ((self.userModel?.profileImageUrl)!))
+            print("/////// url \(String(describing: url))")
+
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
-                
+                print("/////// data: \(String(describing: data))")
                 DispatchQueue.main.async {
                     view.imageviewProfile.image = UIImage(data: data!)
                     view.imageviewProfile.layer.cornerRadius = view.imageviewProfile.frame.width/2
                     view.imageviewProfile.clipsToBounds = true
                 }
-            })
+            }).resume()
+            return view
         }
-        
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
