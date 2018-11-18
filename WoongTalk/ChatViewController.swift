@@ -13,6 +13,8 @@ import Firebase
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     var uid: String?
     var chatRoomUid: String?
     
@@ -24,6 +26,71 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textfieldMessage: UITextField!
     
     public var destinationUid: String! // 대화할 상대의 uid
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        uid = Auth.auth().currentUser?.uid
+        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        checkChatRoom()
+        // tabbar off
+        self.tabBarController?.tabBar.isHidden = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    // 시작
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("///// viewWillAppear ")
+        let center = NotificationCenter.default
+        
+        center.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        center.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    // 종료
+    // 다시 tabbar on
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @objc
+    func keyboardWillShow(notification: Notification) {
+        print("//////// keyboard ")
+        
+        guard let keyboardInfo = notification.userInfo else {
+            return
+        }
+        
+        if let keyboardSize = (keyboardInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print("//////// keyboardSize: \(keyboardSize.height)")
+            self.bottomConstraint.constant = keyboardSize.height
+        }
+        
+        UIView.animate(withDuration: 0, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {
+            (completion) in
+        })
+    }
+    
+    @objc
+    func keyboardWillHide(notification: Notification) {
+        self.bottomConstraint.constant = 20
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc
+    func dismissKeyboard() {
+        print("////////dismisskeyboard!!!!")
+        self.view.endEditing(true)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -37,17 +104,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.labelMessage.numberOfLines = 0
             return view
         } else {
-            print("/////// destination \(String(describing: destinationUid))")
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
             view.labelName.text = userModel?.userName
             view.labelMessage.text = self.comments[indexPath.row].message
             view.labelMessage.numberOfLines = 0
             
             let url = URL(string: ((self.userModel?.profileImageUrl)!))
-            print("/////// url \(String(describing: url))")
 
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
-                print("/////// data: \(String(describing: data))")
                 DispatchQueue.main.async {
                     view.imageviewProfile.image = UIImage(data: data!)
                     view.imageviewProfile.layer.cornerRadius = view.imageviewProfile.frame.width/2
@@ -60,15 +124,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        uid = Auth.auth().currentUser?.uid
-        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
-        checkChatRoom()
-        // Do any additional setup after loading the view.
     }
     
     @objc func createRoom() {
