@@ -43,11 +43,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // 시작
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("///// viewWillAppear ")
+        
         let center = NotificationCenter.default
         
-        center.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        center.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        print("viewWillAppear )")
+        center.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // 종료
@@ -61,14 +62,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc
     func keyboardWillShow(notification: Notification) {
-        print("//////// keyboard ")
         
         guard let keyboardInfo = notification.userInfo else {
             return
         }
         
+        
         if let keyboardSize = (keyboardInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print("//////// keyboardSize: \(keyboardSize.height)")
+            print("// keyboardSize: \(keyboardSize.height)")
             self.bottomConstraint.constant = keyboardSize.height
         }
         
@@ -76,18 +77,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded()
         }, completion: {
             (completion) in
+            
+            if self.comments.count > 0 {
+                self.tableview.scrollToRow(at: IndexPath(item: self.comments.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            }
         })
     }
     
     @objc
     func keyboardWillHide(notification: Notification) {
+        print("// willHide")
         self.bottomConstraint.constant = 20
         self.view.layoutIfNeeded()
     }
     
     @objc
     func dismissKeyboard() {
-        print("////////dismisskeyboard!!!!")
+        print("// dismisskeyboard")
         self.view.endEditing(true)
     }
     
@@ -148,7 +154,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "uid": uid!,
                 "message": textfieldMessage.text!
             ]
-            Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
+            Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value, withCompletionBlock: { (err, ref) in
+                self.textfieldMessage.text = ""
+                
+            })
         }
     }
     
@@ -192,6 +201,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.comments.append(comment!)
             }
             self.tableview.reloadData()
+            
+            if self.comments.count > 0 {
+                self.tableview.scrollToRow(at: IndexPath(item: self.comments.count-1, section: 0), at: UITableView.ScrollPosition.bottom, animated: true)
+            }
         })
     }
     
