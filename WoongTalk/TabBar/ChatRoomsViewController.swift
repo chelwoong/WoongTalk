@@ -91,12 +91,9 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        // 새로 처음부터 로딩
+    override func viewDidAppear(_ animated: Bool) {
         viewDidLoad()
     }
-    
     
 
     /*
