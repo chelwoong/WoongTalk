@@ -108,15 +108,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let view = tableview.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
             view.labelMessage.text = self.comments[indexPath.row].message
             view.labelMessage.numberOfLines = 0
+            if let time = self.comments[indexPath.row].timestamp {
+              view.labelTimestamp.text = time.toDayTime
+            }
+            
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
             view.labelName.text = userModel?.userName
             view.labelMessage.text = self.comments[indexPath.row].message
             view.labelMessage.numberOfLines = 0
-            
             let url = URL(string: ((self.userModel?.profileImageUrl)!))
-
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
                 DispatchQueue.main.async {
                     view.imageviewProfile.image = UIImage(data: data!)
@@ -124,6 +126,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     view.imageviewProfile.clipsToBounds = true
                 }
             }).resume()
+            if let time = self.comments[indexPath.row].timestamp {
+                view.labelTimestamp.text = time.toDayTime
+            }
             return view
         }
     }
@@ -242,6 +247,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+extension Int {
+    
+    var toDayTime: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
+        let date = Date(timeIntervalSince1970: Double(self)/1000)
+        return dateFormatter.string(from: date)
+        
+    }
 }
 
 class MyMessageCell: UITableViewCell {
