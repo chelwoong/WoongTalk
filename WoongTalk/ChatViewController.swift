@@ -154,7 +154,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "uid": uid!,
                 "message": textfieldMessage.text!
             ]
-            Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value, withCompletionBlock: { (err, ref) in
+        Database.database().reference().child("chatRooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value, withCompletionBlock: { (err, ref) in
                 self.textfieldMessage.text = ""
                 
             })
@@ -162,7 +162,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func checkChatRoom() {
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value, with: ({ (dataSnapshot) in
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value, with: { (dataSnapshot) in
             for item in dataSnapshot.children.allObjects as! [DataSnapshot]{
                 
                 // 내가 대화할 상대방을 체크하는 코드
@@ -178,7 +178,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
-        }))
+        })
     }
     
     
